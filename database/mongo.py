@@ -9,6 +9,7 @@ db = mongo_client["Bachelor"]
 
 
 ## Helper method to get a specific collection from a database
+## Add the database as parameter to access another database.
 def get_collection(collection):
     return db.get_collection(collection)
 
@@ -18,7 +19,6 @@ async def get_all_items_from_collection(collection):
 
 
 def insert_to_collection(collection, item):
-    print(item)
     # Add any item to a collection
     # Users, products, etc
     return collection.insert_one(item)
