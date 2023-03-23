@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "adding products"
+
+bags =("Gucci - woman bag" "Chanel - woman bag" "YSL - woman bag" "Valentino - woman bag")
+
+for bag in ${bags}; do
+

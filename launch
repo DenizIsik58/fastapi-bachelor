@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Launching backend..."
+uvicorn main:api --reload
