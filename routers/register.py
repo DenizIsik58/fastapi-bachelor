@@ -12,8 +12,9 @@ from util.json_manager import serialize_models
 register_router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
+
 @register_router.post("/")
-async def create_user(form: Register = Body(...)):
+async def register(form: Register = Body(...)):
     if not form.email.__contains__("@"):
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Incorrect email")
 
@@ -32,5 +33,6 @@ async def create_user(form: Register = Body(...)):
     user_obj = Body(username=form.username, email=form.email, salt=salt, hashed_pwd=hashed_pwd).extra
     new_user = get_collection("users").insert_one(jsonable_encoder(user_obj))
     created_user = get_collection("users").find_one({"_id": new_user.inserted_id})
+    user = {"email": created_user.get("email"), "username": created_user.get("username")}
 
-    return JSONResponse(status_code=status.HTTP_201_CREATED, content=serialize_models(created_user))
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=serialize_models(user))
