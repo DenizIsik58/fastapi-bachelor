@@ -32,7 +32,4 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return JSONResponse({"access_token": access_token, "refresh_token": refresh_token})
 
 
-# In case we need to fetch the user for protected endpoints
-async def get_current_user(token: str = Depends(oauth2_scheme)):
-    user = token
-    return user
+

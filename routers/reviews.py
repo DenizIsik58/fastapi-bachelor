@@ -1,15 +1,19 @@
-from fastapi import APIRouter, Body, HTTPException
+from fastapi import APIRouter, Body, HTTPException, Depends, Header
 from fastapi.encoders import jsonable_encoder
+from fastapi_jwt_auth import AuthJWT
 from starlette import status
 from starlette.responses import JSONResponse
 from database.mongo import get_collection, get_single_item, get_all_reviews_by_product_name
 from models.review import Review
+from routers.authentication import get_current_user
 
 reviews_router = APIRouter()
 
-
+## PROTECTED ENDPOINT
 @reviews_router.post("/add")
-async def add_review(review: Review = Body(...)):
+async def add_review(review: Review = Body(...), current_user=Depends(get_current_user)):
+    review.rater = current_user
+
     collection = get_collection("products")
 
     user = get_single_item(get_collection("users"), "username", review.rater)
@@ -28,8 +32,9 @@ async def add_review(review: Review = Body(...)):
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=jsonable_encoder(review))
 
 
+## PROTECTED ENDPOINT
 @reviews_router.get("/{product_name}")
-async def get_all_reviews(product_name: str):
+async def get_all_reviews(product_name: str, current_user=Depends(get_current_user)):
     # Return all reviews from the database
     return JSONResponse(status_code=status.HTTP_200_OK,
                         content=get_all_reviews_by_product_name(product_name=product_name))

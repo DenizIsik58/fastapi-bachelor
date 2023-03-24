@@ -1,7 +1,9 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, Header
 from fastapi_jwt_auth import AuthJWT
+from fastapi_jwt_auth.exceptions import AuthJWTException
 
 authentication_router = APIRouter()
+
 
 @authentication_router.post('/refresh')
 def refresh(Authorize: AuthJWT = Depends()):
@@ -16,3 +18,16 @@ def refresh(Authorize: AuthJWT = Depends()):
     current_user = Authorize.get_jwt_subject()
     new_access_token = Authorize.create_access_token(subject=current_user)
     return {"access_token": new_access_token}
+
+
+# In case we need to fetch the user for protected endpoints
+async def get_current_user(Authorize: AuthJWT = Depends()):
+    try:
+        # This will ensure that the endpoint is protected
+        Authorize.jwt_required()
+
+        # access_token is the JWT token sent in the "access_token" header
+        current_user = Authorize.get_jwt_subject()
+        return current_user
+    except AuthJWTException:
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")

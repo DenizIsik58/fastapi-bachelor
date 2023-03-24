@@ -10,7 +10,7 @@ from models.product import Product
 products_router = APIRouter()
 
 
-# TODO: protect this endpoint
+
 @products_router.post("/add")
 async def add_product(product: Product = Body(...)):
     collection = get_collection("products")
