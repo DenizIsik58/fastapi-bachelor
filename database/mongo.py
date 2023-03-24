@@ -19,12 +19,12 @@ def get_collection(collection):
 def get_all_items_from_collection(collection):
     return list(serialize_models(collection.find({})))
 
+
 def get_all_reviews_by_product_name(product_name):
     product = get_collection("products").find_one({"name": product_name})
     if product is None:
         return None
     return list(serialize_models(product["reviews"]))
-    #return list(serialize_models(get_collection("products").find({"reviews": {"$exists": True}})))
 
 
 def insert_to_collection(collection, item):
@@ -32,9 +32,11 @@ def insert_to_collection(collection, item):
     # Users, products, etc
     return collection.insert_one(item)
 
+
 def get_single_item(collection, key, value):
     return serialize_models(collection.find_one({key: value
-                                }))
+                                                 }))
+
 
 ## count_documents is not synchronous
 def get_count_items(collection, key, value):

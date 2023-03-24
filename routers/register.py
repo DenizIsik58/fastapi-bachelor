@@ -20,7 +20,7 @@ async def register(form: Register = Body(...)):
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Incorrect email")
 
     if form.password != form.password_repeat:
-        return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="The passwords does not match!")
+        return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="The passwords do not match!")
 
     if get_collection("users").count_documents({"email": form.email}) > 0:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This email already exists!")
