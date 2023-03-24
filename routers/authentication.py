@@ -3,7 +3,7 @@ from fastapi_jwt_auth import AuthJWT
 
 authentication_router = APIRouter()
 
-@authentication_router.post('/')
+@authentication_router.post('/refresh')
 def refresh(Authorize: AuthJWT = Depends()):
     """
     The jwt_refresh_token_required() function ensures a valid refresh

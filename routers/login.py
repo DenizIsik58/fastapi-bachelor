@@ -17,7 +17,7 @@ def get_config():
     return Settings()
 
 
-@login_router.post("/login", response_model=Token)
+@login_router.post("", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), Authorize: AuthJWT = Depends()):
     is_authorized = authenticate_and_verify_passwords(form_data.username, form_data.password)
     if not is_authorized:

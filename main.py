@@ -1,14 +1,15 @@
 import dotenv
 import uvicorn
 from fastapi import FastAPI
-from routers import login, products, register,authentication
+from routers import login, products, register, authentication, reviews
 
 api = FastAPI()
 
-api.include_router(login.login_router)
+api.include_router(login.login_router, prefix="/login")
+api.include_router(reviews.reviews_router, prefix="/products/reviews")
 api.include_router(products.products_router, prefix="/products")
 api.include_router(register.register_router, prefix="/register")
-api.include_router(authentication.authentication_router, prefix="/")
+api.include_router(authentication.authentication_router)
 
 @api.get("/")
 async def root():
