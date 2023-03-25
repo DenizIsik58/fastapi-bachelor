@@ -17,10 +17,10 @@ async def add_product(product: BaseProduct = Body(...)):
     if ProductDocument.objects(name=product.name).count() > 0:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This bag already exists!")
 
-    new_product = ProductDocument(name=product.name, price=product.price, description=product.description, reviews=[]).save()
+    new_product = ProductDocument(name=product.name, price=product.price, description=product.description).save()
     created_product = ProductDocument.objects(id=new_product.id).to_json()
 
-    return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_product)
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=json.loads(created_product))
 
 
 # TODO: protet this endpoint
@@ -28,12 +28,12 @@ async def add_product(product: BaseProduct = Body(...)):
 async def get_all_products():
     # Return all products from the database
     return JSONResponse(status_code=status.HTTP_200_OK,
-                        content=(ProductDocument.objects().to_json()))
-@products_router.get("/{name}")
-async def get_product_by_name(name):
-    if ProductDocument.objects(name=name).count() == 0:
+                        content=([json.loads(product.to_json()) for product in ProductDocument.objects()]))
+@products_router.get("/{_id}")
+async def get_product_by_name(_id):
+    if ProductDocument.objects(id=_id).count() == 0:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This product does not exist!")
 
     return JSONResponse(status_code=status.HTTP_200_OK,
-                        content=(ProductDocument.objects(name=name).first().to_json()))
+                        content=json.loads(ProductDocument.objects(id=_id).first().to_json()))
 

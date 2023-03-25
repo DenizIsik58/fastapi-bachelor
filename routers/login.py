@@ -1,3 +1,5 @@
+import json
+
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from starlette import status
@@ -29,7 +31,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     access_token = Authorize.create_access_token(subject=form_data.username)
     refresh_token = Authorize.create_refresh_token(subject=form_data.username)
 
-    return JSONResponse(content=Token(access_token=access_token, refresh_token=refresh_token).json())
+    return JSONResponse(content=json.loads(Token(access_token=access_token, refresh_token=refresh_token).json()))
 
 
 

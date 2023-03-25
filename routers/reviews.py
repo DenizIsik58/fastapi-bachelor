@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 from fastapi import APIRouter, Body, HTTPException, Depends
 from starlette import status
@@ -15,33 +16,28 @@ reviews_router = APIRouter()
 async def add_review(review: Review = Body(...), current_user=Depends(get_current_user)):
     review.rater = current_user
     review.timestamp = datetime.now()
+    
+    product = ProductDocument.objects(id=review.product_id).first()
 
-    user = get_user(review.rater)
-    if user is None:
-        return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This user does not exist!")
-
-    product = ProductDocument.objects(name=review.product_name).first()
     if product is None:
-        return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This product does not exist!")
+        return HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="This product does not exist!")
 
     if review.rating > 5 or review.rating < 1:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Rating must be between 1 and 5!")
 
-    new_review = ReviewDocument(rater=review.rater, rating=review.rating, comment=review.comment, product_name=review.product_name, timestamp=review.timestamp)
-    product.update(push__reviews=new_review)
-    product.reload()
+    new_review = ReviewDocument(rater=review.rater, rating=review.rating, comment=review.comment, product_id=review.product_id, timestamp=review.timestamp).save()
 
-    created_review = ProductDocument.objects(name=review.product_name).first().reviews[-1].to_json()
+    created_review = ReviewDocument.objects(id=new_review.id).first().to_json()
 
-    return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_review)
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=json.loads(created_review))
 
 
 ## PROTECTED ENDPOINT
-@reviews_router.get("/{product_name}")
-async def get_all_reviews(product_name: str, current_user=Depends(get_current_user)):
+@reviews_router.get("/{product_id}")
+async def get_all_reviews(product_id, current_user=Depends(get_current_user)):
     # Return all reviews from the database
-    if ProductDocument.objects(name=product_name).count() == 0:
+    if ProductDocument.objects(id=product_id).count() == 0:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This product does not exist!")
 
     return JSONResponse(status_code=status.HTTP_200_OK,
-                        content=[review.to_json() for review in ProductDocument.objects(name=product_name).first().reviews])
+                        content=[json.loads(review.to_json()) for review in ReviewDocument.objects(product_id=product_id)])

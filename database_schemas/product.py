@@ -1,3 +1,4 @@
+from bson import ObjectId
 from mongoengine import StringField, Document, ListField, EmbeddedDocumentField, FloatField
 from database_schemas.review import ReviewDocument
 
@@ -11,4 +12,3 @@ class ProductDocument(Document):
     name = StringField(required=True)
     description = StringField(required=True)
     price = FloatField(required=True)
-    reviews = ListField(EmbeddedDocumentField(ReviewDocument), default=[])

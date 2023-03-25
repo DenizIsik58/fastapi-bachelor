@@ -1,3 +1,5 @@
+import json
+
 import bcrypt
 from fastapi import APIRouter, Body, HTTPException
 from fastapi.security import OAuth2PasswordBearer
@@ -31,4 +33,4 @@ async def register(form: Register = Body(...)):
     new_user = UserDocument(username=form.username, email=form.email, salt=salt, hashed_pwd=hashed_pwd).save()
     created_user = UserDocument.objects(id=new_user.id).exclude("salt", "hashed_pwd").to_json()
 
-    return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_user)
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=json.loads(created_user))
