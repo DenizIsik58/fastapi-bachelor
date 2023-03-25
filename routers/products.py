@@ -29,12 +29,11 @@ async def get_all_products():
     # Return all products from the database
     return JSONResponse(status_code=status.HTTP_200_OK,
                         content=(ProductDocument.objects().to_json()))
+@products_router.get("/{name}")
+async def get_product_by_name(name):
+    if ProductDocument.objects(name=name).count() == 0:
+        return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This product does not exist!")
 
-# TODO: Should we remove products?
-"""
-@products_router.delete("/products/remove/{id}")
-async def remove_product():
-    # Remove a products from the database
-    database.delete_from_collection("products", id)
-    raise HTTPException(status_code=400, detail="Not implemented yet!")
-"""
+    return JSONResponse(status_code=status.HTTP_200_OK,
+                        content=(ProductDocument.objects(name=name).first().to_json()))
+
