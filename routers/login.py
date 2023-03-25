@@ -4,10 +4,10 @@ from starlette import status
 from starlette.responses import JSONResponse
 from fastapi_jwt_auth import AuthJWT
 
-from models.settings import Settings
-from models.token import Token
-from routers.register import oauth2_scheme
+from base_models.settings import Settings
+from base_models.token import Token
 from util.authentication_manager import authenticate_and_verify_passwords
+from util.json_manager import serialize_models
 
 login_router = APIRouter()
 
@@ -29,7 +29,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     access_token = Authorize.create_access_token(subject=form_data.username)
     refresh_token = Authorize.create_refresh_token(subject=form_data.username)
 
-    return JSONResponse({"access_token": access_token, "refresh_token": refresh_token})
+    return JSONResponse(content=Token(access_token=access_token, refresh_token=refresh_token).json())
 
 
 

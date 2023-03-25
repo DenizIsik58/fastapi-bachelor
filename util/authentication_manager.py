@@ -1,56 +1,9 @@
-"""from datetime import timedelta, datetime
-
-import jwt
-from fastapi import Depends, HTTPException
-from passlib.context import CryptContext
-from starlette import status
-
-from database.mongo import get_collection
-from models.token import TokenData
-from models.user import UserInDB
-from routers.register import oauth2_scheme
-
-SECRET_KEY = "b5111f00721e7b9efd79243655fd64ab8fceafee69a5829e18e4b1d6355d9f2c"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-def verify_password(plain_password, hashed_password):
-    return pwd_context.verify(plain_password, hashed_password)
-
-def get_password_hash(password):
-    return pwd_context.hash(password)
-
-
-
-def create_access_token(data: dict, expires_delta: timedelta | None):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.utcnow() + expires_delta
-    else:
-        expire = datetime.utcnow() + timedelta(minutes=15)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
-
-"""
-import os
-from datetime import datetime
-
 import bcrypt
-import dotenv
-import jwt
-from fastapi import Depends, HTTPException
-from pydantic.datetime_parse import timedelta
-from starlette import status
-from database.mongo import get_collection
-from models.token import TokenData
-from routers.register import oauth2_scheme
+from database_schemas.user import UserDocument
 
 
 def get_user(username: str):
-    user = get_collection("users").find_one({"username": username})
+    user = UserDocument.objects(username=username).first()
     if user is None:
         return None
     return user

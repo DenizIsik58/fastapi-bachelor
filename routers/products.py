@@ -1,25 +1,24 @@
+import json
+
 from fastapi import APIRouter, Body, HTTPException
-from fastapi.encoders import jsonable_encoder
 from starlette import status
 from starlette.responses import JSONResponse
+from database_schemas.product import ProductDocument
+from base_models.product import BaseProduct
 
-from database.mongo import get_collection, insert_to_collection, get_count_items, get_single_item, \
-    get_all_items_from_collection
-from models.product import Product
 
 products_router = APIRouter()
 
 
-
+# TODO: Do we need protection?
 @products_router.post("/add")
-async def add_product(product: Product = Body(...)):
-    collection = get_collection("products")
+async def add_product(product: BaseProduct = Body(...)):
 
-    if get_count_items(collection, "name", product.name) > 0:
+    if ProductDocument.objects(name=product.name).count() > 0:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This bag already exists!")
 
-    new_product = insert_to_collection(collection, jsonable_encoder(product))
-    created_product = get_single_item(collection, "_id", new_product.inserted_id)
+    new_product = ProductDocument(name=product.name, price=product.price, description=product.description, reviews=[]).save()
+    created_product = ProductDocument.objects(id=new_product.id).to_json()
 
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_product)
 
@@ -29,8 +28,7 @@ async def add_product(product: Product = Body(...)):
 async def get_all_products():
     # Return all products from the database
     return JSONResponse(status_code=status.HTTP_200_OK,
-                        content=get_all_items_from_collection(get_collection("products")))
-
+                        content=(ProductDocument.objects().to_json()))
 
 # TODO: Should we remove products?
 """

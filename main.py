@@ -1,8 +1,10 @@
+import os
+
 import dotenv
 import uvicorn
 from fastapi import FastAPI
-from routers import login, products, register, authentication, reviews
-
+from routers import login, products, authentication, register, reviews
+from mongoengine import connect
 api = FastAPI()
 
 api.include_router(login.login_router, prefix="/login")
@@ -19,6 +21,7 @@ async def root():
 @api.on_event("startup")
 async def startup_event():
     dotenv.load_dotenv()
+    connect(host=os.getenv("CONNECTION_STRING"))
 
 
 if __name__ == "__main__":

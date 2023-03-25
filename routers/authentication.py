@@ -1,11 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException, Header
 from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
+from starlette.responses import JSONResponse
+
+from base_models.token import Access_Token
 
 authentication_router = APIRouter()
 
 
-@authentication_router.post('/refresh')
+@authentication_router.post('/refresh', response_model=Access_Token)
 def refresh(Authorize: AuthJWT = Depends()):
     """
     The jwt_refresh_token_required() function ensures a valid refresh
@@ -17,7 +20,7 @@ def refresh(Authorize: AuthJWT = Depends()):
 
     current_user = Authorize.get_jwt_subject()
     new_access_token = Authorize.create_access_token(subject=current_user)
-    return {"access_token": new_access_token}
+    return JSONResponse(status_code=200, content=Access_Token(access_token=new_access_token).json())
 
 
 # In case we need to fetch the user for protected endpoints

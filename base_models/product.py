@@ -1,12 +1,10 @@
 from typing import List
-
 from pydantic import BaseModel
+from base_models.review import Review
 
-from models.review import Review
 
-
-class Product(BaseModel):
+class BaseProduct(BaseModel):
     name: str
     description: str
-    price: int
+    price: float
     reviews: List[Review] = []

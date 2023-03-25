@@ -2,9 +2,9 @@ from pydantic import BaseModel
 
 
 class Review(BaseModel):
-    review: str
+    comment: str
     product_name: str
     rating: int
-    rater: str
-    timestamp: str
+    rater: str = None
+    timestamp: str = None
 
