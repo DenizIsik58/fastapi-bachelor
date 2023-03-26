@@ -31,6 +31,7 @@ async def register(form: Register = Body(...)):
     hashed_pwd = bcrypt.hashpw(form.password.encode("utf-8"), salt)
 
     new_user = UserDocument(username=form.username, email=form.email, salt=salt, hashed_pwd=hashed_pwd).save()
+    # TODO: Don't query the id again
     created_user = UserDocument.objects(id=new_user.id).exclude("salt", "hashed_pwd").to_json()
 
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=json.loads(created_user))

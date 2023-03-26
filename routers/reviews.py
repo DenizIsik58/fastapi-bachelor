@@ -27,7 +27,7 @@ async def add_review(review: Review = Body(...), current_user=Depends(get_curren
 
     new_review = ReviewDocument(rater=review.rater, rating=review.rating, comment=review.comment, product_id=review.product_id, timestamp=review.timestamp).save()
 
-    created_review = ReviewDocument.objects(id=new_review.id).first().to_json()
+    created_review = new_review.to_json()
 
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=json.loads(created_review))
 
