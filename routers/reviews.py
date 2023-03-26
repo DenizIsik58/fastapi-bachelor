@@ -16,7 +16,7 @@ reviews_router = APIRouter()
 async def add_review(review: Review = Body(...), current_user=Depends(get_current_user)):
     review.rater = current_user
     review.timestamp = datetime.now()
-    
+
     product = ProductDocument.objects(id=review.product_id).first()
 
     if product is None:

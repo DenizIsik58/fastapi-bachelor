@@ -1,9 +1,6 @@
-import os
-
-import dotenv
-import uvicorn
+import os, dotenv, uvicorn
 from fastapi import FastAPI
-from routers import login, products, authentication, register, reviews
+from routers import login, products, authentication, register, reviews, purchase
 from mongoengine import connect
 api = FastAPI()
 
@@ -12,6 +9,7 @@ api.include_router(reviews.reviews_router, prefix="/products/reviews")
 api.include_router(products.products_router, prefix="/products")
 api.include_router(register.register_router, prefix="/register")
 api.include_router(authentication.authentication_router)
+api.include_router(purchase.purchase_router)
 
 @api.get("/")
 async def root():
