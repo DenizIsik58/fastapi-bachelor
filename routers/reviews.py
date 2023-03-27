@@ -14,9 +14,6 @@ reviews_router = APIRouter()
 ## PROTECTED ENDPOINT
 @reviews_router.post("/add")
 async def add_review(review: Review = Body(...), current_user=Depends(get_current_user)):
-    review.rater = current_user
-    review.timestamp = datetime.now()
-
     product = ProductDocument.objects(id=review.product_id).first()
 
     if product is None:
@@ -25,7 +22,7 @@ async def add_review(review: Review = Body(...), current_user=Depends(get_curren
     if review.rating > 5 or review.rating < 1:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Rating must be between 1 and 5!")
 
-    new_review = ReviewDocument(rater=review.rater, rating=review.rating, comment=review.comment, product_id=review.product_id, timestamp=review.timestamp).save()
+    new_review = ReviewDocument(rater=current_user, rating=review.rating, comment=review.comment, product_id=review.product_id, timestamp=datetime.now()).save()
 
     created_review = new_review.to_json()
 

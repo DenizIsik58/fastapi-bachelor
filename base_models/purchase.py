@@ -8,6 +8,4 @@ class BasePurchaseItem(BaseModel):
 
 
 class BasePurchase(BaseModel):
-    user_id: str = None
-    purchase_date: str = None
     items: List[BasePurchaseItem]

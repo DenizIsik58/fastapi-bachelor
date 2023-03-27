@@ -12,3 +12,4 @@ class ProductDocument(Document):
     name = StringField(required=True)
     description = StringField(required=True)
     price = FloatField(required=True)
+    image_url = StringField(required=True)

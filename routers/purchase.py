@@ -1,3 +1,4 @@
+import random
 from datetime import datetime
 import json
 
@@ -30,15 +31,20 @@ async def purchase_products(purchases: BasePurchase = Body(...), current_user=De
     user_id = UserDocument.objects(username=current_user).first().id
 
     purchases_saved = []
+    images = []
 
     for purchase in purchases.items:
         product = ProductDocument.objects(id=purchase.product_id).first()
+
         if product is None:
             return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"The product with id {purchase.product_id} doesn't exists!")
 
+        images.append(product.image_url)
         purchases_saved.append(Purchase(product_id=product.id, quantity=purchase.quantity, price=product.price))
 
-    new_purchase = PurchaseDocument(user_id=user_id, purchase_date=datetime.now(), items=purchases_saved).save()
+    image = random.choice(images)
+
+    new_purchase = PurchaseDocument(user_id=user_id, purchase_date=datetime.now(), items=purchases_saved, image_url=image).save()
 
     return JSONResponse(status_code=status.HTTP_200_OK, content=json.loads(new_purchase.to_json()))
 
