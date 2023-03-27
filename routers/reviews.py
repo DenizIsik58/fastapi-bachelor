@@ -1,18 +1,19 @@
 import json
 from datetime import datetime
+
 from fastapi import APIRouter, Body, HTTPException, Depends
 from starlette import status
 from starlette.responses import JSONResponse
+
 from base_models.review import Review
 from database_schemas.product import ProductDocument
 from database_schemas.review import ReviewDocument
 from routers.authentication import get_current_user
-from util.authentication_manager import get_user
 
 reviews_router = APIRouter()
 
 ## PROTECTED ENDPOINT
-@reviews_router.post("/add")
+@reviews_router.post("/products/reviews/add")
 async def add_review(review: Review = Body(...), current_user=Depends(get_current_user)):
     product = ProductDocument.objects(id=review.product_id).first()
 
@@ -30,7 +31,7 @@ async def add_review(review: Review = Body(...), current_user=Depends(get_curren
 
 
 ## PROTECTED ENDPOINT
-@reviews_router.get("/{product_id}")
+@reviews_router.get("/products/reviews/{product_id}")
 async def get_all_reviews(product_id, current_user=Depends(get_current_user)):
     # Return all reviews from the database
     if ProductDocument.objects(id=product_id).count() == 0:

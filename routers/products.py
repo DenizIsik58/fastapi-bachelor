@@ -11,7 +11,7 @@ products_router = APIRouter()
 
 
 # TODO: Do we need protection?
-@products_router.post("/add")
+@products_router.post("/products/add")
 async def add_product(product: BaseProduct = Body(...)):
 
     if ProductDocument.objects(name=product.name).count() > 0:
@@ -24,14 +24,14 @@ async def add_product(product: BaseProduct = Body(...)):
 
 
 # TODO: protet this endpoint
-@products_router.get("/")
+@products_router.get("/products")
 async def get_all_products():
     # Return all products from the database
     return JSONResponse(status_code=status.HTTP_200_OK,
                         content=([json.loads(product.to_json()) for product in ProductDocument.objects()]))
 
 
-@products_router.get("/{_id}")
+@products_router.get("/products/{_id}")
 async def get_product_by_name(_id):
     if ProductDocument.objects(id=_id).count() == 0:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This product does not exist!")
