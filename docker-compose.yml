@@ -12,4 +12,6 @@ services:
       - .:/app
     command: >
       sh -c "pip install -r requirements.txt && python main.py"
+    restart: always
+
 
