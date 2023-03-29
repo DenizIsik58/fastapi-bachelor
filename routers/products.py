@@ -36,7 +36,7 @@ async def get_first_6_products():
                         content=([json.loads(product.to_json()) for product in ProductDocument.objects[:6]]))
 
 @products_router.get("/products/{_id}")
-async def get_product_by_name(_id):
+async def get_product_by_id(_id):
     if ProductDocument.objects(id=_id).count() == 0:
         return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="This product does not exist!")
 
