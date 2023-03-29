@@ -1,0 +1,121 @@
+[
+  {
+    "name": "Caramel Swirl",
+    "short_description": "A luxurious brown curly leather bag with gold hardware.",
+    "long_description": "The Caramel Swirl bag is a statement piece that adds a touch of luxury to any outfit. Made from high-quality brown curly leather, this bag features intricate gold hardware and a spacious interior perfect for carrying all your essentials. The unique design of the bag makes it stand out in any crowd, while the premium materials used in its construction ensure that it will last for years to come. Whether you're heading to work or out for a night on the town, the Caramel Swirl bag is the perfect accessory to complete any look.",
+    "image_url": "https://i.imgur.com/L9O1h48.png",
+    "price": 100.0
+  },
+  {
+    "name": "Oceanic Trio",
+    "short_description": "A stylish tri-color bag in shades of blue, brown, and pink.",
+    "long_description": "The Oceanic Trio bag is the perfect blend of style and functionality. Featuring a sleek design with three distinct color panels in shades of blue, brown, and pink, this bag is sure to turn heads wherever you go. The spacious interior is perfect for carrying all your daily essentials, while the sturdy straps ensure that you can carry it with ease. Whether you're headed to the office or out for a day of shopping, the Oceanic Trio bag is the perfect accessory to complete any outfit. Its unique color combination adds a touch of playfulness to your look, making it a must-have for any fashion-forward woman.",
+    "image_url": "https://i.imgur.com/dNWdWHk.png",
+    "price": 110.0
+  },
+  {
+    "name": "Monochrome Square",
+    "short_description": "A modern square-shaped black and white bag that adds a touch of sophistication to any outfit.",
+    "long_description": "The Monochrome Square bag is the perfect accessory for the fashion-forward woman. With its sleek and modern design, this bag is sure to turn heads wherever you go. The black and white color scheme is timeless and sophisticated, making it the perfect complement to any outfit. The square shape of the bag is both practical and stylish, providing ample space for all your essentials while still maintaining a chic and streamlined look. Whether you're headed to the office or out for a night on the town, the Monochrome Square bag is the perfect finishing touch to any outfit.",
+    "image_url": "https://i.imgur.com/IbIadUm.png",
+    "price": 117.0
+  },
+  {
+    "name": "Lunar Eclipse",
+    "short_description": "A modern black and white round bag that adds a touch of edginess to any outfit.",
+    "long_description": "The Lunar Eclipse bag is the ultimate statement piece for the modern woman. With its bold and unique design, this bag is sure to turn heads wherever you go. The black and white color scheme is both striking and versatile, making it the perfect complement to any outfit. The round shape of the bag is both practical and stylish, providing ample space for all your essentials while still maintaining a sleek and sophisticated look. The Lunar Eclipse bag is the perfect accessory for the woman who wants to stand out from the crowd and make a statement with her fashion choices.",
+    "image_url": "https://i.imgur.com/zAgCpSM.png",
+    "price": 109.0
+  },
+  {
+    "name": "Golden Luxe",
+    "short_description": "An elegant and luxurious white bag with golden buttons that adds a touch of sophistication to any outfit.",
+    "long_description": "The Golden Luxe bag is the epitome of luxury and elegance. Crafted from high-quality white leather, this bag features intricate golden buttons that add a touch of sophistication to any outfit. The spacious interior is perfect for carrying all your essentials, while the sturdy straps ensure that you can carry it with ease. Whether you're headed to a formal event or a night out on the town, the Golden Luxe bag is the perfect accessory to elevate your look. Its timeless design and premium materials make it a must-have for any fashion-conscious woman who values quality and style.",
+    "image_url": "https://i.imgur.com/lef6AMb.png",
+    "price": 215.0
+  },
+  {
+    "name": "Bronze Elegance",
+    "short_description": "A chic and stylish bag with white and bronze features and a brown handle that's perfect for any occasion.",
+    "long_description": "The Bronze Elegance bag is the perfect accessory for the woman who wants to add a touch of sophistication to her look. The white and bronze color scheme is both chic and versatile, making it the perfect complement to any outfit. The brown handle adds a touch of warmth and contrast to the overall design, while the spacious interior is perfect for carrying all your essentials. Whether you're headed to work or out for a night on the town, the Bronze Elegance bag is the perfect finishing touch to any outfit. Its timeless design and high-quality materials ensure that it will be a staple in your wardrobe for years to come.",
+    "image_url": "https://i.imgur.com/rSx8Q3P.png",
+    "price": 280.0
+  },
+  {
+    "name": "Urban Duo",
+    "short_description": "A stylish set of two bags with a brick pattern - one in brown and the other in pink and blue - perfect for adding a touch of modernity to any outfit.",
+    "long_description": "The Urban Duo bag set is the ultimate statement piece for the modern woman. With their unique brick pattern in brown and pink and blue colors, these bags are sure to turn heads wherever you go. The spacious interior of both bags is perfect for carrying all your essentials, while the sturdy straps ensure that you can carry them with ease. Whether you choose to wear them together or separately, the Urban Duo bags are the perfect accessories to elevate your look. Their modern design and high-quality materials make them a must-have for any fashion-conscious woman who values style and functionality. Whether you're headed to work, running errands, or out for a night on the town, the Urban Duo bags are the perfect finishing touch to any outfit.",
+    "image_url": "https://i.imgur.com/6zb6lMB.png",
+    "price": 380.0
+  },
+  {
+    "name": "Grid Luxe",
+    "short_description": "A stunning bag with a black grid and white-yellowish pattern that exudes sophistication and style.",
+    "long_description": "The Grid Luxe bag is the perfect accessory for the woman who wants to make a statement. With its bold black grid and intricate white-yellowish pattern, this bag is sure to turn heads wherever you go. The high-quality materials and attention to detail make it look and feel like a Gucci bag, but at a more affordable price. The spacious interior is perfect for carrying all your essentials, while the sturdy straps ensure that you can carry it with ease. Whether you're headed to a fancy dinner or a night out with friends, the Grid Luxe bag is the perfect finishing touch to any outfit. Its unique design and premium materials make it a must-have for any fashion-conscious woman who values quality and style.",
+    "image_url": "https://i.imgur.com/MnOIthD.png",
+    "price": 450.0
+  },
+  {
+    "name": "Circle Chic",
+    "short_description": "A stylish white bag with black features and circular accents on each side, perfect for adding a touch of sophistication to any outfit.",
+    "long_description": "The Circle Chic bag is the ultimate accessory for the modern woman who wants to make a statement. Its elegant white design is complemented by black accents and circular accents on each side, making it the perfect addition to any outfit. The spacious interior is perfect for carrying all your essentials, while the sturdy straps ensure that you can carry it with ease. Whether you're headed to work, running errands, or out for a night on the town, the Circle Chic bag is the perfect finishing touch to any outfit. Its unique design and high-quality materials make it a must-have for any fashion-conscious woman who values style and functionality. With its timeless elegance and eye-catching design, the Circle Chic bag is sure to become a staple in your wardrobe for years to come.",
+    "image_url": "https://i.imgur.com/FdGecSI.png",
+    "price": 800.0
+  },
+  {
+    "name": "Hidden Elegance",
+    "short_description": "A simple and elegant white bag with subtle black accents and hidden patterns, perfect for any occasion.",
+    "long_description": "The Hidden Elegance bag is the epitome of understated sophistication. With its clean white design and subtle black accents, this bag is the perfect accessory for any outfit. The hidden patterns in the middle add a touch of intrigue and complexity to the overall design, making it a conversation starter without being too bold or flashy. The spacious interior is perfect for carrying all your essentials, while the sturdy straps ensure that you can carry it with ease. Whether you're headed to work, running errands, or out for a night on the town, the Hidden Elegance bag is the perfect finishing touch to any outfit. Its timeless design and high-quality materials make it a must-have for any fashion-conscious woman who values simplicity and elegance. With its versatility and understated beauty, the Hidden Elegance bag is sure to become a staple in your wardrobe for years to come.",
+    "image_url": "https://i.imgur.com/q8UeWI0.png",
+    "price": 1000.0
+  },
+  {
+    "name": "Golden Glamour",
+    "short_description": "A luxurious white-goldish bag, exuding sophistication, style and class.",
+    "long_description": "The Golden Glamour bag is the ultimate symbol of elegance and refinement. Crafted from the finest materials, this white-goldish bag is the perfect accessory for any fashion-forward woman who values style and luxury. Its clean lines, understated design and subtle gold accents make it the perfect complement to any outfit, from casual to formal. The spacious interior is perfect for carrying all your essentials, while the sturdy straps ensure that you can carry it with ease. Whether you're headed to a business meeting, a night out on the town or a special event, the Golden Glamour bag is the perfect finishing touch to any outfit. Its timeless design and high-quality materials make it a must-have for any woman who wants to exude confidence, sophistication and glamour. With its luxurious look and feel, the Golden Glamour bag is sure to turn heads and make a statement wherever you go.",
+    "image_url": "https://i.imgur.com/u9Dxvnt.png",
+    "price": 180.0
+  },
+  {
+    "name": "Wild Fusion",
+    "short_description": "A stylish bag with a fusion of tiger and leopard prints on one half and brown on the other, perfect for making a bold statement.",
+    "long_description": "The Wild Fusion bag is a perfect blend of classic and modern fashion. It features a striking tiger and leopard pattern on one half, which is sure to turn heads and make a statement. The other half is a sleek and sophisticated brown, giving the bag a balanced and stylish look. This bag is perfect for women who love to make a bold statement with their fashion choices. It's spacious enough to hold all your essentials, and its sturdy straps make it comfortable to carry all day long_description. The Wild Fusion bag is the perfect accessory for any outfit, whether you're dressing up for a night out or running errands around town. With its unique design and high-quality construction, this bag is sure to become a favorite in your collection. It's perfect for women who want to add a touch of wildness to their wardrobe, while still maintaining a classy and sophisticated look.",
+    "image_url": "https://i.imgur.com/X5sC7rs.png",
+    "price": 345.0
+  },
+  {
+    "name": "Rustic Charm",
+    "short_description": "A simple yet charming bag with a blend of brown and orange hues, perfect for adding a touch of warmth to any outfit.",
+    "long_description": "The Rustic Charm bag is a perfect accessory for any woman who loves simple yet stylish fashion. It features a blend of warm brown and orange hues, giving it a rustic and charming look. The bag is crafted from high-quality materials, making it durable and sturdy. It's designed to be spacious enough to hold all your essentials, and its adjustable strap makes it comfortable to carry all day long_description. Whether you're running errands, going to work, or meeting friends for lunch, this bag is the perfect companion. Its neutral colors make it easy to pair with any outfit, while its simple and elegant design adds a touch of sophistication to your look. The Rustic Charm bag is perfect for women who appreciate the beauty of simplicity, and want to add a touch of warmth to their wardrobe. It's a versatile and timeless piece that will never go out of style.",
+    "image_url": "https://i.imgur.com/s9QATqu.png",
+    "price": 217.0
+  },
+  {
+    "name": "Monochrome Elegance",
+    "short_description": "A sleek and sophisticated black and white bag with a fancy clip, perfect for elevating any outfit.",
+    "long_description": "The Monochrome Elegance bag is the perfect accessory for any woman who loves minimalist fashion with a touch of sophistication. This sleek and sophisticated bag features a black and white color scheme that is both timeless and versatile. The fancy clip adds a touch of elegance and glamour to the design, making it a statement piece that will surely turn heads. Crafted from high-quality materials, the Monochrome Elegance bag is durable and sturdy, designed to hold all your essentials without compromising on style. The adjustable strap ensures maximum comfort, allowing you to carry the bag all day long_description. The bag's simple yet elegant design makes it easy to pair with any outfit, from casual jeans and a t-shirt to a formal dress or suit. Whether you're going to work, running errands, or attending a special event, the Monochrome Elegance bag is the perfect choice for any occasion. It's a must-have accessory for any modern and stylish woman who wants to look effortlessly chic and sophisticated.",
+    "image_url": "https://i.imgur.com/pIhXH0n.png",
+    "price": 467.0
+  },
+  {
+    "name": "Vintage Belle",
+    "short_description": "A classic and elegant white bag with subtle brown accents.",
+    "long_description": "The Vintage Belle bag is a timeless piece that exudes elegance and sophistication. With its white color and subtle brown features, it's perfect for any occasion - from a day out shopping to a fancy dinner party. The bag has a simple design that harkens back to the classic styles of the past, making it a great addition to any vintage-inspired outfit. The high-quality materials used in its construction ensure that it will last for years to come, making it a worthwhile investment for any fashion-conscious woman.",
+    "image_url": "https://i.imgur.com/eQOqZ0J.png",
+    "price": 743.0
+  },
+  {
+    "name": "Vintage Monochrome",
+    "short_description": "A classic black and white bag with gold accents.",
+    "long_description": "Our Vintage Monochrome Bag is the perfect accessory for any outfit. The black and white color scheme is a timeless and classic look that will never go out of style. The addition of gold accents on the sides adds a touch of elegance and sophistication. The simple yet elegant design is perfect for any occasion, whether it's a night out with friends or a business meeting. The spacious interior and sturdy construction make it a practical and versatile choice for any woman's wardrobe. Carry this bag with confidence and add a touch of timeless beauty to your outfit.",
+    "image_url": "https://i.imgur.com/vMhIp4O.png",
+    "price": 999.0
+  },
+  {
+    "name": "Lovestruck",
+    "short_description": "A charming brown and white bag with a heart and circle design.",
+    "long_description": "The Lovestruck Bag is the perfect accessory for any romantic occasion. With a unique design featuring a heart in the center and a circle above it, this bag is sure to catch the eye of anyone who sees it. The brown and white color scheme adds a touch of elegance, making it ideal for both casual and formal events. Made with high-quality materials, this bag is both durable and stylish, ensuring that it will be a staple in your collection for years to come. Whether you're out for a date night or running errands around town, the Lovestruck Bag is the perfect companion.",
+    "image_url": "https://i.imgur.com/8qkv9i0.png",
+    "price": 172.0
+  }
+]
