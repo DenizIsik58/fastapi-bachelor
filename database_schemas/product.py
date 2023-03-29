@@ -10,6 +10,7 @@ MongoDb has a limit of 16mb per document, so if you have a lot of reviews, this 
 
 class ProductDocument(Document):
     name = StringField(required=True)
-    description = StringField(required=True)
+    long_description = StringField(required=True)
     price = FloatField(required=True)
+    short_description = StringField(required=True)
     image_url = StringField(required=True)
