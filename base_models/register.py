@@ -1,8 +1,8 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 
 class Register(BaseModel):
     username: str
-    email: str
+    email: EmailStr
     password: str
     password_repeat: str
