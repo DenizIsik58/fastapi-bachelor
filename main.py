@@ -2,6 +2,9 @@ import os, dotenv, uvicorn
 from fastapi import FastAPI
 from routers import login, products, authentication, register, reviews, purchase, logout
 from mongoengine import connect
+
+from util.product_loader import load_products_to_db
+
 api = FastAPI()
 
 api.include_router(login.login_router, tags=["Login"])
