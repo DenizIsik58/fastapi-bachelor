@@ -7,19 +7,20 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: api
+      app: bachelor-api
   replicas: 3
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: api
+        app: bachelor-api
     spec:
       containers:
-      - name: nginx
-        image: nginx
+      - name: bachelor-api
+        image: denizi/bachelor
+        envFrom:
+          - configMapRef:
+              name: production-secrets
         ports:
-        - containerPort: 80
-      imagePullSecrets:
-      - name: <secret-name>
+        - containerPort: 8000

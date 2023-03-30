@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bachelor-api
+spec:
+  selector:
+    app: bachelor-api
+  ports:
+    - port: 8000
+      targetPort: 8000
+  externalTrafficPolicy: Cluster
+  type: LoadBalancer
