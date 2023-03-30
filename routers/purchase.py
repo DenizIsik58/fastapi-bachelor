@@ -1,11 +1,9 @@
 import random
 from datetime import datetime
 from util.json_manager import to_json
-
 from fastapi import APIRouter, Depends, Body, HTTPException
 from starlette import status
 from starlette.responses import JSONResponse
-
 from base_models.purchase import BasePurchase
 from database_schemas.product import ProductDocument
 from database_schemas.purchase import Purchase, PurchaseDocument
