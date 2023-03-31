@@ -1,9 +1,12 @@
-import os, dotenv, uvicorn
-from fastapi import FastAPI
-from routers import login, products, authentication, register, reviews, purchase, logout
-from mongoengine import connect
+import dotenv
+import os
+import uvicorn
 
-from util.product_loader import load_products_to_db
+from fastapi import FastAPI
+from mongoengine import connect
+from starlette.middleware.cors import CORSMiddleware
+
+from routers import login, products, authentication, register, reviews, purchase, logout
 
 api = FastAPI()
 
@@ -14,6 +17,14 @@ api.include_router(register.register_router, tags=["Register"])
 api.include_router(authentication.authentication_router, tags=["Authentication"])
 api.include_router(purchase.purchase_router, tags=["Purchase history"])
 api.include_router(logout.logout_router, tags=["Logout"])
+
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @api.get("/")
 async def root():

@@ -19,6 +19,7 @@ spec:
       containers:
       - name: bachelor-api
         image: denizi/bachelor
+        imagePullPolicy: Always
         envFrom:
           - configMapRef:
               name: production-secrets
