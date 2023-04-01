@@ -1,7 +1,6 @@
 import dotenv
 import os
 import uvicorn
-
 from fastapi import FastAPI
 from mongoengine import connect
 from starlette.middleware.cors import CORSMiddleware

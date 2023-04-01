@@ -50,5 +50,5 @@ async def register(form: Register = Body(...)):
 
     return JSONResponse(
         status_code=status.HTTP_201_CREATED,
-        content=to_json(created_user, singular=True)
+        content=to_json(created_user, singular=False)
     )
