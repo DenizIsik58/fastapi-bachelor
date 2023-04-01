@@ -51,7 +51,7 @@ async def add_review(review: Review = Body(...), current_user=Depends(get_curren
 
 # PROTECTED ENDPOINT
 @reviews_router.get("/products/reviews/{product_id}")
-async def get_all_reviews(product_id, current_user=Depends(get_current_user)):
+async def get_all_reviews(product_id):
     """
     Return all reviews for the given product
     """

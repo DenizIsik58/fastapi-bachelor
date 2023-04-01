@@ -34,24 +34,13 @@ async def add_product(product: BaseProduct = Body(...)):
 
 
 @products_router.get("/products")
-async def get_all_products():
+async def get_all_products(limit: int = None):
     """
     Get all products from the database
     """
     return JSONResponse(
         status_code=status.HTTP_200_OK,
-        content=to_json(ProductDocument.objects(), singular=False)
-    )
-
-
-@products_router.get("/frontpage-products")
-async def get_first_6_products():
-    """
-    Get the first 6 products from the database
-    """
-    return JSONResponse(
-        status_code=status.HTTP_200_OK,
-        content=to_json(ProductDocument.objects[:6], singular=False)
+        content=to_json(ProductDocument.objects().limit(limit), singular=False)
     )
 
 
