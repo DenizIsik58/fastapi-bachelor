@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: bachelor-api
-        image: denizi/bachelor
+        image: denizi/bachelor:latest
         imagePullPolicy: Always
         envFrom:
           - configMapRef:
