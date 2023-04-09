@@ -1,4 +1,4 @@
-from util.json_manager import to_json
+from util.json_manager import to_json, to_json_reviews
 from datetime import datetime
 
 from fastapi import APIRouter, Body, Depends
@@ -45,7 +45,7 @@ async def add_review(review: Review = Body(...), current_user=Depends(get_curren
 
     return JSONResponse(
         status_code=status.HTTP_201_CREATED,
-        content=to_json(new_review, singular=True)
+        content=to_json_reviews(new_review, singular=True)
     )
 
 
@@ -66,7 +66,7 @@ async def get_all_reviews(product_id):
 
     return JSONResponse(
         status_code=status.HTTP_200_OK,
-        content=to_json(
+        content=to_json_reviews(
             ReviewDocument.objects(product_id=product_id),
             singular=False
         )

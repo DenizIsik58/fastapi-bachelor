@@ -1,6 +1,6 @@
 import random
 from datetime import datetime
-from util.json_manager import to_json
+from util.json_manager import to_json, to_json_purchases
 from fastapi import APIRouter, Depends, Body, HTTPException
 from starlette import status
 from starlette.responses import JSONResponse
@@ -17,13 +17,24 @@ purchase_router = APIRouter()
 async def get_purchases(current_user=Depends(get_current_user)):
     user_id = UserDocument.objects(username=current_user).first().id
 
-    purchases = to_json(
+    purchases = to_json_purchases(
         PurchaseDocument.objects(user_id=user_id),
         singular=False
     )
 
     return purchases
 
+
+@purchase_router.get("/purchases/{purchase_id}")
+async def get_purchase(purchase_id: str, current_user=Depends(get_current_user)):
+    user_id = UserDocument.objects(username=current_user).first().id
+
+    purchase = to_json_purchases(
+        PurchaseDocument.objects(user_id=user_id, id=purchase_id).first(),
+        singular=True
+    )
+
+    return purchase
 
 @purchase_router.post("/purchase")
 async def purchase_products(purchases: BasePurchase = Body(...), current_user=Depends(get_current_user)):
@@ -39,6 +50,12 @@ async def purchase_products(purchases: BasePurchase = Body(...), current_user=De
             return HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail=f"The product with id {purchase.product_id} doesn't exists!"
+            )
+
+        if purchase.quantity == 0:
+            return HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="The quantity of the product must be greater than 0!"
             )
 
         images.append(product.image_url)
@@ -59,5 +76,5 @@ async def purchase_products(purchases: BasePurchase = Body(...), current_user=De
 
     return JSONResponse(
         status_code=status.HTTP_200_OK,
-        content=to_json(new_purchase.to_json(), singular=True)
+        content=to_json_purchases(new_purchase, singular=True)
     )
