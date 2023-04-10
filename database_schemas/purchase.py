@@ -6,6 +6,7 @@ class Purchase(EmbeddedDocument):
     product_id = ObjectIdField(required=True)
     quantity = IntField(required=True)
     price = FloatField(required=True)
+    name = StringField(required=True)
 
 
 class PurchaseDocument(Document):

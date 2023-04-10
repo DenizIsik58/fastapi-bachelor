@@ -16,9 +16,10 @@ purchase_router = APIRouter()
 @purchase_router.get("/purchases")
 async def get_purchases(current_user=Depends(get_current_user)):
     user_id = UserDocument.objects(username=current_user).first().id
+    purchases = PurchaseDocument.objects(user_id=user_id)
 
     purchases = to_json_purchases(
-        PurchaseDocument.objects(user_id=user_id),
+        purchases,
         singular=False
     )
 
@@ -28,13 +29,13 @@ async def get_purchases(current_user=Depends(get_current_user)):
 @purchase_router.get("/purchases/{purchase_id}")
 async def get_purchase(purchase_id: str, current_user=Depends(get_current_user)):
     user_id = UserDocument.objects(username=current_user).first().id
-
     purchase = to_json_purchases(
         PurchaseDocument.objects(user_id=user_id, id=purchase_id).first(),
         singular=True
     )
 
     return purchase
+
 
 @purchase_router.post("/purchase")
 async def purchase_products(purchases: BasePurchase = Body(...), current_user=Depends(get_current_user)):
@@ -59,11 +60,16 @@ async def purchase_products(purchases: BasePurchase = Body(...), current_user=De
             )
 
         images.append(product.image_url)
+
         purchases_saved.append(Purchase(
             product_id=product.id,
             quantity=purchase.quantity,
-            price=product.price
+            price=product.price,
+            name=product.name
         ))
+
+        for purchase in purchases_saved:
+            print(purchase.quantity)
 
     image = random.choice(images)
 
