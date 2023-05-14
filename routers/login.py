@@ -10,7 +10,6 @@ from base_models.login import BaseLogin
 from base_models.settings import Settings
 from base_models.token import Token
 from util.authentication_manager import authenticate_and_verify_passwords
-from util.json_manager import serialize_models
 
 login_router = APIRouter()
 
@@ -30,7 +29,7 @@ async def login_for_access_token(login_data: BaseLogin = Body(...), Authorize: A
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    access_token = Authorize.create_access_token(subject=login_data.username.lower())
-    refresh_token = Authorize.create_refresh_token(subject=login_data.username.lower())
+    access_token = Authorize.create_access_token(subject=login_data.username.lower(), expires_time=(24*60)*5000)
+    refresh_token = Authorize.create_refresh_token(subject=login_data.username.lower(), expires_time=(24*60)*5000)
 
     return JSONResponse(content=json.loads(Token(access_token=access_token, refresh_token=refresh_token).json()))

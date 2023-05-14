@@ -10,3 +10,4 @@ spec:
       targetPort: 8000
   externalTrafficPolicy: Cluster
   type: LoadBalancer
+  loadBalancerIP: 143.42.222.62

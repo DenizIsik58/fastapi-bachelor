@@ -7,6 +7,7 @@ class Purchase(EmbeddedDocument):
     quantity = IntField(required=True)
     price = FloatField(required=True)
     name = StringField(required=True)
+    image = StringField(required=True)
 
 
 class PurchaseDocument(Document):
