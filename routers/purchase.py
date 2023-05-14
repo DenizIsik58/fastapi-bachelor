@@ -1,6 +1,6 @@
 import random
 from datetime import datetime
-from util.json_manager import to_json, to_json_purchases
+from util.json_manager import to_json_purchases
 from fastapi import APIRouter, Depends, Body, HTTPException
 from starlette import status
 from starlette.responses import JSONResponse
@@ -17,14 +17,13 @@ purchase_router = APIRouter()
 async def get_purchases(current_user=Depends(get_current_user)):
     user_id = UserDocument.objects(username=current_user).first().id
     purchases = PurchaseDocument.objects(user_id=user_id)
-
+    
     purchases = to_json_purchases(
         purchases,
         singular=False
     )
 
     return purchases
-
 
 @purchase_router.get("/purchases/{purchase_id}")
 async def get_purchase(purchase_id: str, current_user=Depends(get_current_user)):
@@ -65,7 +64,8 @@ async def purchase_products(purchases: BasePurchase = Body(...), current_user=De
             product_id=product.id,
             quantity=purchase.quantity,
             price=product.price,
-            name=product.name
+            name=product.name,
+            image=product.image_url
         ))
 
         for purchase in purchases_saved:

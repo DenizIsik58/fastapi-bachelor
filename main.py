@@ -17,13 +17,13 @@ api.add_middleware(
     allow_headers=["*"],
 )
 
-api.include_router(login.login_router, tags=["Login"])
+api.include_router(login.login_router, tags=["Authentication"])
 api.include_router(reviews.reviews_router, tags=["Reviews"])
 api.include_router(products.products_router, tags=["Products"])
 api.include_router(register.register_router, tags=["Register"])
 api.include_router(authentication.authentication_router, tags=["Authentication"])
 api.include_router(purchase.purchase_router, tags=["Purchase history"])
-api.include_router(logout.logout_router, tags=["Logout"])
+api.include_router(logout.logout_router, tags=["Authentication"])
 
 @api.get("/")
 async def root():
